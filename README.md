@@ -92,33 +92,40 @@ Now that both the metadata nd types setup is completed, just run the build comma
 > yarn build && yarn lint
 yarn run v1.22.0
 $ yarn generate:defs && yarn generate:meta
-$ ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package sample-polkadotjs-typegen/interfaces --input ./src/interfaces
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/types.ts
+$ ts-node --skip-project node_modules/.bin/polkadot-types-from-defs \
+  --package sample-polkadotjs-typegen/interfaces \
+  --input ./src/interfaces
+
+sample-polkadotjs-typegen/src/interfaces/types.ts
 	Generating
 	Extracting interfaces for signaling
 	Extracting interfaces for treauryRewards
 	Extracting interfaces for voting
 	Writing
 
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/augment-types.ts
+sample-polkadotjs-typegen/src/interfaces/augment-types.ts
 	Generating
 	Writing
 
-$ ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package sample-polkadotjs-typegen/interfaces --endpoint ./metadata.json --output ./src/interfaces
+$ ts-node --skip-project node_modules/.bin/polkadot-types-from-chain \
+  --package sample-polkadotjs-typegen/interfaces \
+  --endpoint ./metadata.json \
+  --output ./src/interfaces
+
 Generating from metadata, 81,267 bytes
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/augment-api-consts.ts
+sample-polkadotjs-typegen/src/interfaces/augment-api-consts.ts
 	Generating
 	Writing
 
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/augment-api-query.ts
+sample-polkadotjs-typegen/src/interfaces/augment-api-query.ts
 	Generating
 	Writing
 
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/augment-api-tx.ts
+sample-polkadotjs-typegen/src/interfaces/augment-api-tx.ts
 	Generating
 	Writing
 
-/Users/jaco/Projects/polkadot-js/test/sample-polkadotjs-typegen/src/interfaces/augment-api.ts
+sample-polkadotjs-typegen/src/interfaces/augment-api.ts
 	Generating
 	Writing
 
@@ -210,6 +217,6 @@ async function main (): Promise<void> {
 await main();
 ```
 
-## ... and it is a ...
+## ... and that is a ...
 
 ... wrap. Just a really simple walk-through to customizing the API TypeScript definitions for your chain.
