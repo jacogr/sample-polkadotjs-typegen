@@ -1,0 +1,17 @@
+{
+  "name": "sample-polkadotjs-typegen",
+  "version": "0.0.1",
+  "description": "A sample using @polkadot/typegen to generate type definitions",
+  "main": "index.js",
+  "repository": "git@github.com:jacogr/sample-polkadotjs-typegen.git",
+  "author": "Jaco Greeff <jacogr@gmail.com>",
+  "license": "The Unlicense",
+  "private": true,
+  "dependencies": {
+    "@polkadot/api": "1.4.0-beta.30"
+  },
+  "devDependencies": {
+    "@polkadot/typegen": "1.4.0-beta.30",
+    "typescript": "^3.8.2"
+  }
+}
