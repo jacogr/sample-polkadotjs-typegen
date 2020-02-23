@@ -33,7 +33,7 @@ We will delve into the setup and running the scripts and what they do in a short
 
 The idea here is to use the actual chain metadata to generate the actual api augmented endpoints. The metadata we are adding here (in addition to the user types), is from the Edgeware Berlin testnet. So this is a rea-world example of configuring the API for a specific substrate chain. For the metadata retrieval, we just ran a simple curl command to retrieve the metadata -
 
-` curl -H "Content-Type: application/json" -d '{"id":"1", "jsonrpc":"2.0", "method": "state_getMetadata", "params":[]}' http://localhost:9933`
+`curl -H "Content-Type: application/json" -d '{"id":"1", "jsonrpc":"2.0", "method": "state_getMetadata", "params":[]}' http://localhost:9933`
 
 And then add the full JSONPC output as received to the `metadata.json` file. A trimmed version would look like -
 
@@ -60,7 +60,7 @@ export { default as treauryRewards } from './treauryRewards/definitions';
 export { default as voting } from './voting/definitions';
 ```
 
-As explained above, it really is just a re-export of the definitions, so they are all easily accessible to the outside, i.e. we will use this import inside our own code to use the definitions in API initialization. The generation scripts don't use this specific file, but once-again, it follows the `@polkadot/types` convention.
+As explained above, it really is just a re-export of the definitions, so they are all easily accessible to the outside, i.e. we will use this import inside our own code to use the definitions in API initialization. The generation scripts will load this file to determine which types it needs to import. By the `@polkadot/types` convention, match the export names with the folders (preferably your runtime module names), the generation scripts will use these names to find the correct folders to output the generated `types.ts` to.
 
 For each of the folders, `signaling`, `treasuyRewards` and `voting` another `definitions.ts` file is contained within. Looking at the one from `signaling`, it contains this -
 
