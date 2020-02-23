@@ -91,8 +91,7 @@ Looking at the example in this repo, it also has `augment*`, `index.ts` and `typ
 Now that both the metadata nd types setup is completed, we just run the build command via `yarn build` and magically (assuming you didn't have the `augment*` and other generated files), these files will be added. When running this command, the console should display something like -
 
 ```
-> yarn build && yarn lint
-yarn run v1.22.0
+> yarn build
 $ yarn generate:defs && yarn generate:meta
 $ ts-node --skip-project \
   node_modules/.bin/polkadot-types-from-defs \
@@ -102,8 +101,7 @@ $ ts-node --skip-project \
 sample-polkadotjs-typegen/src/interfaces/types.ts
 	Generating
 	Extracting interfaces for signaling
-	Extracting interfaces for treauryRewards
-	Extracting interfaces for voting
+	...
 	Writing
 
 sample-polkadotjs-typegen/src/interfaces/augment-types.ts
@@ -117,30 +115,26 @@ $ ts-node --skip-project \
     --output ./src/interfaces
 
 Generating from metadata, 81,267 bytes
-sample-polkadotjs-typegen/src/interfaces/augment-api-consts.ts
-	Generating
-	Writing
-
-sample-polkadotjs-typegen/src/interfaces/augment-api-query.ts
-	Generating
-	Writing
-
-sample-polkadotjs-typegen/src/interfaces/augment-api-tx.ts
-	Generating
-	Writing
+	...
 
 sample-polkadotjs-typegen/src/interfaces/augment-api.ts
 	Generating
 	Writing
 
 ✨  Done in 4.04s.
-yarn run v1.22.0
-$ tsc --noEmit --pretty
-✨  Done in 2.28s.
->
 ```
 
-And that is it. We are ready to use all these generated types this after some TS config. If you take a look at the generated `src/signaling/types.ts`, you would see generated TS interfaces, such as -
+Now if we check the actual output agains the source via `yarn lint`, we would see that valid output has been generated -
+
+```
+> yarn lint
+$ tsc --noEmit --pretty
+✨  Done in 2.28s.
+```
+
+## Peering at the output
+
+We are ready to use all these generated types this after some TS config. If you take a look at the generated `src/signaling/types.ts`, you would see generated TS interfaces, such as -
 
 ```js
 import { Struct } from '@polkadot/types/codec';
@@ -245,6 +239,6 @@ async function main (): Promise<void> {
 await main();
 ```
 
-## ... and that is a ...
+## And that is a ...
 
 ... wrap. Just a really simple walk-through to customizing the API TypeScript definitions for your chain.
