@@ -2,11 +2,11 @@
 
 This is a sample TypeScript using `@polkadot/typegen` to generate type definitions. It uses both types defined for the specific chain as well as the chain metadata to generate types that the API is decorated with.
 
-**NOTE** This is built using the latest updates in the `1.4.0` api track, and as such it uses the latest (at the time of writing) api 1.4.0-beta. If you want to play on your own, it is also suggested that you use the beta (some generation types have moved around internally). The 1.4 release is a couple of days away. (At which point these docs will also be included in the API getting started itself as an example)
+**NOTE** This is built using the latest updates in the `1.4.0` api track, and as such it uses the latest (at the time of writing) `@polkadot/api 1.4.0-beta`. If you want to play on your own, it is also suggested that you use the beta (some generation types have moved around internally). The 1.4 release is a couple of days away, at which point these docs will also be included in the API getting started itself as an example.
 
 ## Packages
 
-For the packages we need from the `@polkadot/*` toolset, we have added `@polkdot/api` (we want to do API stuff) and `@polkadot/typegen` (to generate the actual interfaces). So our scripts and dependencies contain the following -
+For the packages we need from the `@polkadot/*` toolset, we have added `@polkdot/api` (we want to do API stuff) and `@polkadot/typegen` (to generate the actual interfaces). So our scripts and dependencies inside `package.json` contain the following -
 
 ```json
 {
@@ -27,7 +27,7 @@ For the packages we need from the `@polkadot/*` toolset, we have added `@polkdot
 }
 ```
 
-We will delve into the setup and running the scripts (and what they do in a short bit), but as of now just notice that we are running the scripts via `ts-node`. Since we supply our definitions as `*.ts` files, this is important otherwise they will not be parseable. `build` will just run both the types and meta generators (in that order, so metadata can use the types) and we have a `lint` that can just check that everything is as it is meant to be.
+We will delve into the setup and running the scripts and what they do in a short bit, but as of now just notice that we are running the scripts via `ts-node`. Since we supply our definitions as `*.ts` files, this is important otherwise they will not be parseable. `build` will just run both the types and meta generators (in that order, so metadata can use the types) and we have a `lint` that can just check that everything is as it is meant to be.
 
 ## Metadata setup
 
@@ -41,18 +41,18 @@ And then add the full JSONPC output as received to the `metadata.json` file. A t
 {"jsonrpc":"2.0","result":"0x6d6574610b6c185379737....","id":29}
 ```
 
-The generator can also use a `wss://` endpoint as part of the generation, but in most cases you would want a static metadata to work from in development, hence actually adding it here.
+The generator can also use a `wss://` as an `--endpoint` param as part of the generation, but in most cases you would want a static metadata to work from in development, hence we are actually adding it here.
 
 ## Types setup
 
-The types are defined in the `src/interfaces` folder. While this repo contains a number of generated files in there as wll, you basically only need -
+The types are defined in the `src/interfaces` folder. While this repo contains a number of generated files in there as well, you basically only need to manually add the following -
 
 - `src/interfaces/definitions.ts` - this just exports all the sub-folder definitions in one go
 - `src/interfaces/<module>/definitions.ts` - type definitions for a specific module
 
-This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on convention. The generating scripts will expect a structure matching this. The top-level `interfaces/` folder can be anything, however the content structure need to match.
+This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on the onvention used in the `@polkadot/types` library. The generating scripts will expect a structure matching this, since the same underlying code is actually used inside `@polkadot/types` as well for interface generation. The top-level `interfaces/` folder can be name anything, however the internal content structure need to match what is defined above.
 
-For the top-level, defintion files, it basically contains -
+For the top-level the definition file has the following contents -
 
 ```js
 export { default as signaling } from './signaling/definitions';
@@ -60,7 +60,7 @@ export { default as treauryRewards } from './treauryRewards/definitions';
 export { default as voting } from './voting/definitions';
 ```
 
-As explained above, it really is just a re-export of the definitions, so ther are all easily accessible. The generation scripts don't use this specific file, but once-again, convention.
+As explained above, it really is just a re-export of the definitions, so they are all easily accessible to the outside, i.e. we will use this import inside our own code to use the definitions in API initialization. The generation scripts don't use this specific file, but once-again, it follows the `@polkadot/types` convention.
 
 For each of the folders, `signaling`, `treasuyRewards` and `voting` another `definitions.ts` file is contained within. Looking at the one from `signaling`, it contains this -
 
@@ -82,19 +82,22 @@ export default {
 }
 ```
 
-Just the type definitions (which you should be familiar with), nsted inside a `types`. (This allows extension points, i.e. there is some work to expose the custome RPC types alongside, so that would become another key on a per-module basis) Looking at the example here, as it stands, it also have `augment*` and `index.ts` as well as `types.ts` files in the interfaces folder. These are all generated. The only requirement for user-edits are the `definitions.ts` files.
+Just the type definitions (the structure of which you should be familiar with), nested inside a `types: {...}` container. This allows us future extension points, i.e. there is some work to expose the custome RPC types alongside, so that would become another key on a per-module basis.
+
+Looking at the example in this repo, it also has `augment*`, `index.ts` and `types.ts` files in the interfaces folder. These are all generated, and will be re-generated when the generator is run - so all edits to these files will be lost. The only requirement for user-edits are the `definitions.ts` files.
 
 ## Generating
 
-Now that both the metadata nd types setup is completed, just run the build command via `yarn build` - magically (assuming you didn't have the `augment*` and other generated files), these files will be added. Output from running this command, would look a bit like -
+Now that both the metadata nd types setup is completed, we just run the build command via `yarn build` and magically (assuming you didn't have the `augment*` and other generated files), these files will be added. When running this command, the console should display something like -
 
 ```
 > yarn build && yarn lint
 yarn run v1.22.0
 $ yarn generate:defs && yarn generate:meta
-$ ts-node --skip-project node_modules/.bin/polkadot-types-from-defs \
-  --package sample-polkadotjs-typegen/interfaces \
-  --input ./src/interfaces
+$ ts-node --skip-project \
+  node_modules/.bin/polkadot-types-from-defs \
+    --package sample-polkadotjs-typegen/interfaces \
+    --input ./src/interfaces
 
 sample-polkadotjs-typegen/src/interfaces/types.ts
 	Generating
@@ -107,10 +110,11 @@ sample-polkadotjs-typegen/src/interfaces/augment-types.ts
 	Generating
 	Writing
 
-$ ts-node --skip-project node_modules/.bin/polkadot-types-from-chain \
-  --package sample-polkadotjs-typegen/interfaces \
-  --endpoint ./metadata.json \
-  --output ./src/interfaces
+$ ts-node --skip-project \
+  node_modules/.bin/polkadot-types-from-chain \
+    --package sample-polkadotjs-typegen/interfaces \
+    --endpoint ./metadata.json \
+    --output ./src/interfaces
 
 Generating from metadata, 81,267 bytes
 sample-polkadotjs-typegen/src/interfaces/augment-api-consts.ts
@@ -136,7 +140,31 @@ $ tsc --noEmit --pretty
 >
 ```
 
-And that is it. We are ready to use this after some TS config.
+And that is it. We are ready to use all these generated types this after some TS config. If you take a look at the generated `src/signaling/types.ts`, you would see generated TS interfaces, such as -
+
+```js
+import { Struct } from '@polkadot/types/codec';
+import { Bytes, Text, u32, u64 } from '@polkadot/types/primitive';
+import { AccountId } from '@polkadot/types/interfaces/runtime';
+import { VoteStage } from 'sample-polkadotjs-typegen/interfaces/voting';
+
+/** @name ProposalContents */
+export interface ProposalContents extends Bytes {}
+
+/** @name ProposalRecord */
+export interface ProposalRecord extends Struct {
+  readonly index: u32;
+  readonly author: AccountId;
+  readonly stage: VoteStage;
+  readonly transition_time: u32;
+  readonly title: Text;
+  readonly contents: Text;
+  readonly vote_id: u64;
+}
+
+/** @name ProposalTitle */
+export interface ProposalTitle extends Bytes {}
+```
 
 ## TypeScript config
 
