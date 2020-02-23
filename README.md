@@ -84,6 +84,8 @@ export default {
 
 Just the type definitions (the structure of which you should be familiar with), nested inside a `types: {...}` container. This allows us future extension points, i.e. there is some work to expose the custome RPC types alongside, so that would become another key on a per-module basis.
 
+In the above, you will note that the `PorposalRecord` references a type for `voting`, i.e. `VoteStage`. The type generation and resolution will determine where the type comes from, and provide the required important on generation.
+
 Looking at the example in this repo, it also has `augment*`, `index.ts` and `types.ts` files in the interfaces folder. These are all generated, and will be re-generated when the generator is run - so all edits to these files will be lost. The only requirement for user-edits are the `definitions.ts` files.
 
 ## Generating
@@ -160,6 +162,8 @@ export interface ProposalRecord extends Struct {
 export interface ProposalTitle extends Bytes {}
 ```
 
+As mentioned earlier, here you will notice the `import { VoteStage }`, the generator has determined that `voting` exports that interface and has added the required imports.
+
 ## TypeScript config
 
 Now that we have files generated, it is time to make TypeScript aware of the types and add an explicit override into out `tsconfig.json`. After some changes, the paths in the config looks as follow (comments are in teh actual config file here) -
@@ -176,7 +180,7 @@ Now that we have files generated, it is time to make TypeScript aware of the typ
 }
 ```
 
-Effectively what we do above is tell the TypeScript compiler to not use the built-in API augmentation, but rather to replace it with our version. This means that all types from these are injected not by the substrate-latest-master version, but rather with what we have defined abve.
+Effectively what we do above is tell the TypeScript compiler to not use the built-in API augmentation, but rather to replace it with our version. This means that all types from these are injected not by the substrate-latest-master version, but rather with what we have defined above.
 
 ## Usage
 
