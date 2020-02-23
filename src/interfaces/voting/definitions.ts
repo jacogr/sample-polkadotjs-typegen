@@ -9,7 +9,7 @@ export default {
       _enum: ['Binary', 'MultiOption', 'RankedChoice']
     },
     TallyType: {
-      _enu: ['OnePerson', 'OneCoin']
+      _enum: ['OnePerson', 'OneCoin']
     },
     VoteOutcome: '[u8; 32]',
     Tally: 'Option<Vec(VoteOutcome, u128)>>',
@@ -21,7 +21,7 @@ export default {
       is_commit_reveal: 'bool'
     },
     Commitments: 'Vec<(AccountId, VoteOutcome)>',
-    Reveals: 'Vec<(AccountId, Vec<VoteOutcome>',
+    Reveals: 'Vec<(AccountId, Vec<VoteOutcome>)>',
     VoteRecord: {
       id: 'u64',
       commitments: 'Commitments',
