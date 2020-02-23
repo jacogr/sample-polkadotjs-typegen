@@ -10,15 +10,14 @@
   "scripts": {
     "build": "yarn generate:defs && yarn generate:meta",
     "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --package sample-polkadotjs-typegen/interfaces --input ./src/interfaces",
-    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package sample-polkadotjs-typegen/interfaces --endpoint ./metadata.json --output ./src/interfaces --strict",
+    "generate:meta": "ts-node --skip-project node_modules/.bin/polkadot-types-from-chain --package sample-polkadotjs-typegen/interfaces --endpoint ./metadata.json --output ./src/interfaces",
     "lint": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "@polkadot/api": "1.4.0-beta.34",
-    "@polkadot/types": "1.4.0-beta.34"
+    "@polkadot/api": "1.4.0-beta.35"
   },
   "devDependencies": {
-    "@polkadot/typegen": "1.4.0-beta.34",
+    "@polkadot/typegen": "1.4.0-beta.35",
     "ts-node": "^8.6.2",
     "typescript": "^3.8.2"
   }

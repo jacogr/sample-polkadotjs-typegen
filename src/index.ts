@@ -11,6 +11,7 @@ import type { VoteRecord } from './interfaces';
 
 // external imports
 import { ApiPromise } from '@polkadot/api';
+import { createType } from '@polkadot/types';
 
 // our local stuff
 import * as defintions from './interfaces/definitions';
@@ -45,7 +46,7 @@ async function main (): Promise<void> {
   });
 
   // even createType works, allowing for our types to be used
-  console.log(`Balance2 bitLength:`, api.createType('Balance2').bitLength());
+  console.log(`Balance2 bitLength:`, createType(api.registry, 'Balance2'), api.createType('Balance2').bitLength());
 }
 
 await main();

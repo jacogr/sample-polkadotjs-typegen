@@ -40,8 +40,8 @@ import { Multisig, Timepoint } from '@polkadot/types/interfaces/utility';
 import { VestingInfo } from '@polkadot/types/interfaces/vesting';
 import { Commitments, Reveals, Tally, TallyType, VoteData, VoteOutcome, VoteRecord, VoteStage, VoteType } from 'sample-polkadotjs-typegen/interfaces/voting';
 
-declare module '@polkadot/types/interfaceRegistry' {
-  export interface InterfaceRegistry {
+declare module '@polkadot/types/types/registry' {
+  export interface InterfaceTypes {
     BitVec: BitVec;
     'Option<BitVec>': Option<BitVec>;
     'Vec<BitVec>': Vec<BitVec>;
