@@ -1,8 +1,8 @@
 # sample-polkadotjs-typegen
 
-This is a sample TypeScript using `@polkadot/typegen` to generate type definitions. It uses both types defined for the specific chain as well as the chain metadata to generate types that the API is decorated with.
+This is a sample TypeScript project that uses `@polkadot/typegen` to generate type definitions that can be used to decorate the `@polkadot/api`. It uses both types defined for the specific chain as well as the chain metadata to generate TypeScript interfaces. This means that interfaces such as `api.query.*`, `api.tx.*` and `api.consts.*` will be decorated based on chain-specific information, instead of an un-augmented catch-all definition.
 
-**NOTE** This is built using the latest updates in the `1.4.0` api track, and as such it uses the latest (at the time of writing) `@polkadot/api 1.4.0-beta`. If you want to play on your own, it is also suggested that you use the beta (some generation types have moved around internally). The 1.4 release is a couple of days away, at which point these docs will also be included in the API getting started itself as an example.
+**NOTE** This is built using the latest updates in the `1.4.0` api track and as such it uses the latest (at the time of writing) `@polkadot/api 1.4.0-beta`. If you want to play on your own, it is also suggested that you use the beta since some generation types have moved around internally, making it easier to augment. The 1.4 release is a short stretch away at which point this README and the code will also be included in the API getting started guide as an example.
 
 ## Packages
 
