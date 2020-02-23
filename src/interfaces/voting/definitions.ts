@@ -12,7 +12,7 @@ export default {
       _enum: ['OnePerson', 'OneCoin']
     },
     VoteOutcome: '[u8; 32]',
-    Tally: 'Option<Vec(VoteOutcome, u128)>>',
+    Tally: 'Option<Vec<(VoteOutcome, u128)>>',
     VoteData: {
       initiator: 'AccountId',
       stage: 'VoteStage',
@@ -28,8 +28,6 @@ export default {
       reveals: 'Reveals',
       data: 'VoteData',
       outcomes: 'Vec<VoteOutcome>'
-    },
-    'voting::VoteType': 'VoteType',
-    'voting::TallyType': 'TallyType'
+    }
   }
 }

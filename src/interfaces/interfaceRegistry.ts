@@ -38,7 +38,7 @@ import { Balance2 } from 'sample-polkadotjs-typegen/interfaces/treauryRewards';
 import { Multiplier } from '@polkadot/types/interfaces/txpayment';
 import { Multisig, Timepoint } from '@polkadot/types/interfaces/utility';
 import { VestingInfo } from '@polkadot/types/interfaces/vesting';
-import { Commitments, Reveals, Tally, TallyType, VoteData, VoteOutcome, VoteRecord, VoteStage, VoteType, voting::TallyType, voting::VoteType } from 'sample-polkadotjs-typegen/interfaces/voting';
+import { Commitments, Reveals, Tally, TallyType, VoteData, VoteOutcome, VoteRecord, VoteStage, VoteType } from 'sample-polkadotjs-typegen/interfaces/voting';
 
 export interface InterfaceRegistry {
   BitVec: BitVec;
@@ -1589,10 +1589,4 @@ export interface InterfaceRegistry {
   VoteRecord: VoteRecord;
   'Option<VoteRecord>': Option<VoteRecord>;
   'Vec<VoteRecord>': Vec<VoteRecord>;
-  voting::VoteType: voting::VoteType;
-  'Option<voting::VoteType>': Option<voting::VoteType>;
-  'Vec<voting::VoteType>': Vec<voting::VoteType>;
-  voting::TallyType: voting::TallyType;
-  'Option<voting::TallyType>': Option<voting::TallyType>;
-  'Vec<voting::TallyType>': Vec<voting::TallyType>;
 }

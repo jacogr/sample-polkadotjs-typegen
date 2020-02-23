@@ -3,7 +3,7 @@
 
 import { ITuple } from '@polkadot/types/types';
 import { Enum, Option, Struct, U8aFixed, Vec } from '@polkadot/types/codec';
-import { bool, u64 } from '@polkadot/types/primitive';
+import { bool, u128, u64 } from '@polkadot/types/primitive';
 import { AccountId } from '@polkadot/types/interfaces/runtime';
 
 /** @name Commitments */
@@ -13,7 +13,7 @@ export interface Commitments extends Vec<ITuple<[AccountId, VoteOutcome]>> {}
 export interface Reveals extends Vec<ITuple<[AccountId, Vec<VoteOutcome>]>> {}
 
 /** @name Tally */
-export interface Tally extends Option<Vec(VoteOutcome,u128)>> {}
+export interface Tally extends Option<Vec<ITuple<[VoteOutcome, u128]>>> {}
 
 /** @name TallyType */
 export interface TallyType extends Enum {
@@ -56,9 +56,3 @@ export interface VoteType extends Enum {
   readonly isMultiOption: boolean;
   readonly isRankedChoice: boolean;
 }
-
-/** @name voting::TallyType */
-export interface voting::TallyType extends TallyType {}
-
-/** @name voting::VoteType */
-export interface voting::VoteType extends VoteType {}

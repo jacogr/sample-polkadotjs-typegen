@@ -8,8 +8,9 @@
   "license": "The Unlicense",
   "private": true,
   "scripts": {
-    "build": "yarn generate",
-    "generate": "ts-node node_modules/.bin/polkadot-types-from-defs --input ./src/interfaces --package sample-polkadotjs-typegen/interfaces"
+    "build": "yarn generate:defs",
+    "generate:defs": "ts-node --skip-project node_modules/.bin/polkadot-types-from-defs --input ./src/interfaces --package sample-polkadotjs-typegen/interfaces",
+    "lint": "tsc --noEmit --pretty"
   },
   "dependencies": {
     "@polkadot/api": "1.4.0-beta.30"

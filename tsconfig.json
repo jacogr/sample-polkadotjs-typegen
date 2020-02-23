@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    /* some defaults */
+    "target": "esnext",
+    "module": "esnext",
+    "jsx": "preserve",
+    "declaration": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+
+    /* specific config */
+    "baseUrl": ".",
+    "paths":
+    {
+      "sample-polkadotjs-typegen/*": ["src/*"]
+    },
+    "skipLibCheck": true,
+    "typeRoots": [
+      "./node_modules/@polkadot/ts",
+      "./node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "build/**/*",
+  ]
+}
