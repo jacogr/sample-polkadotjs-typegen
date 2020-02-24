@@ -34,7 +34,7 @@ import { Bid, BidKind, BidKindVouch, SocietyJudgement, SocietyVote, StrikeCount,
 import { CompactAssignments, CompactScore, ElectionCompute, ElectionResult, ElectionStatus, EraIndex, EraPoints, EraRewards, Exposure, Forcing, IndividualExposure, KeyType, MomentOf, Nominations, PhragmenScore, Points, RewardDestination, SlashJournalEntry, SlashingSpans, SlashingSpansTo204, SpanIndex, SpanRecord, StakingLedger, UnappliedSlash, UnappliedSlashOther, UnlockChunk, ValidatorIndex, ValidatorPrefs, ValidatorPrefsTo145, ValidatorPrefsTo196 } from '@polkadot/types/interfaces/staking';
 import { AccountInfo, DigestOf, DispatchError, DispatchErrorModule, DispatchErrorTo198, DispatchResult, DispatchResultOf, DispatchResultTo198, Event, EventId, EventIndex, EventRecord, EventRecordTo76, Key, Phase, RefCount } from '@polkadot/types/interfaces/system';
 import { OpenTip, OpenTipFinder, OpenTipTip, TreasuryProposal } from '@polkadot/types/interfaces/treasury';
-import { Balance2 } from 'sample-polkadotjs-typegen/interfaces/treauryRewards';
+import { Balance2 } from 'sample-polkadotjs-typegen/interfaces/treasuryRewards';
 import { Multiplier } from '@polkadot/types/interfaces/txpayment';
 import { Multisig, Timepoint } from '@polkadot/types/interfaces/utility';
 import { VestingInfo } from '@polkadot/types/interfaces/vesting';

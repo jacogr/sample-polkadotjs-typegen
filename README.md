@@ -6,7 +6,7 @@ This is a sample TypeScript project that uses `@polkadot/typegen` to generate ty
 
 ## Packages
 
-For the packages we need from the `@polkadot/*` toolset, we have added `@polkdot/api` (we want to do API stuff) and `@polkadot/typegen` (to generate the actual interfaces). So our scripts and dependencies inside `package.json` contain the following -
+For the packages we need from the `@polkadot/*` we have added `@polkadot/api` (we want to do API stuff) and `@polkadot/typegen` (to generate the actual interfaces). So our scripts and dependencies inside `package.json` contain the following -
 
 ```json
 {
@@ -27,7 +27,7 @@ For the packages we need from the `@polkadot/*` toolset, we have added `@polkdot
 }
 ```
 
-We will delve into the setup and running the scripts and what they do in a short bit, but as of now just notice that we are running the scripts via `ts-node`. Since we supply our definitions as `*.ts` files, this is important otherwise they will not be parseable. `build` will just run both the types and meta generators (in that order, so metadata can use the types) and we have a `lint` that can just check that everything is as it is meant to be.
+We will delve into the setup and running the scripts and what they do in a short bit, but as of now just notice that we are running the scripts via `ts-node`. Since we supply our definitions as `*.ts` files, this is important otherwise they will not be parsable. `build` will just run both the types and meta generators (in that order, so metadata can use the types) and we have a `lint` that can just check that everything is as it is meant to be.
 
 ## Metadata setup
 
@@ -50,19 +50,19 @@ The types are defined in the `src/interfaces` folder. While this repo contains a
 - `src/interfaces/definitions.ts` - this just exports all the sub-folder definitions in one go
 - `src/interfaces/<module>/definitions.ts` - type definitions for a specific module
 
-This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on the onvention used in the `@polkadot/types` library. The generating scripts will expect a structure matching this, since the same underlying code is actually used inside `@polkadot/types` as well for interface generation. The top-level `interfaces/` folder can be name anything, however the internal content structure need to match what is defined above.
+This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on the convention used in the `@polkadot/types` library. The generating scripts will expect a structure matching this, since the same underlying code is actually used inside `@polkadot/types` as well for interface generation. The top-level `interfaces/` folder can be name anything, however the internal content structure need to match what is defined above.
 
 For the top-level the definition file has the following contents -
 
 ```js
 export { default as signaling } from './signaling/definitions';
-export { default as treauryRewards } from './treauryRewards/definitions';
+export { default as treasuryRewards } from './treasuryRewards/definitions';
 export { default as voting } from './voting/definitions';
 ```
 
 As explained above, it really is just a re-export of the definitions, so they are all easily accessible to the outside, i.e. we will use this import inside our own code to use the definitions in API initialization. The generation scripts will load this file to determine which types it needs to import. By the `@polkadot/types` convention, match the export names with the folders (preferably your runtime module names), the generation scripts will use these names to find the correct folders to output the generated `types.ts` to.
 
-For each of the folders, `signaling`, `treasuyRewards` and `voting` another `definitions.ts` file is contained within. Looking at the one from `signaling`, it contains this -
+For each of the folders, `signaling`, `treasuryRewards` and `voting` another `definitions.ts` file is contained within. Looking at the one from `signaling`, it contains this -
 
 ```js
 export default {
@@ -82,9 +82,9 @@ export default {
 }
 ```
 
-Just the type definitions (the structure of which you should be familiar with), nested inside a `types: {...}` container. This allows us future extension points, i.e. there is some work to expose the custome RPC types alongside, so that would become another key on a per-module basis.
+Just the type definitions (the structure of which you should be familiar with), nested inside a `types: {...}` container. This allows us future extension points, i.e. there is some work to expose the custom RPC types alongside, so that would become another key on a per-module basis.
 
-In the above, you will note that the `PorposalRecord` references a type for `voting`, i.e. `VoteStage`. The type generation and resolution will determine where the type comes from, and provide the required important on generation.
+In the above, you will note that the `ProposalRecord` references a type for `voting`, i.e. `VoteStage`. The type generation and resolution will determine where the type comes from, and provide the required important on generation.
 
 Looking at the example in this repo, it also has `augment*`, `index.ts` and `types.ts` files in the interfaces folder. These are all generated, and will be re-generated when the generator is run - so all edits to these files will be lost. The only requirement for user-edits are the `definitions.ts` files.
 
@@ -126,7 +126,7 @@ sample-polkadotjs-typegen/src/interfaces/augment-api.ts
 ✨  Done in 4.04s.
 ```
 
-Now if we check the actual output agains the source via `yarn lint`, we would see that valid output has been generated -
+Now if we check the actual output against the source via `yarn lint`, we would see that valid output has been generated -
 
 ```
 > yarn lint
@@ -201,16 +201,16 @@ import { ApiPromise } from '@polkadot/api';
 import { createType } from '@polkadot/types';
 
 // our local stuff
-import * as defintions from './interfaces/definitions';
+import * as definitions from './interfaces/definitions';
 
 async function main (): Promise<void> {
   // extract all types from definitions - fast and dirty approach, flatted on 'types'
-  const types = Object.values(defintions).reduce((res, { types }): object => ({ ...res, ...types }), {});
+  const types = Object.values(definitions).reduce((res, { types }): object => ({ ...res, ...types }), {});
 
   const api = await ApiPromise.create({
     types: {
       ...types,
-      // aliasses that don't do well as part of interfaces
+      // aliases that don't do well as part of interfaces
       'voting::VoteType': 'VoteType',
       'voting::TallyType': 'TallyType',
       // chain-specific overrides
