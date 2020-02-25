@@ -31,7 +31,7 @@ We will delve into the setup and running the scripts and what they do in a short
 
 ## Metadata setup
 
-The idea here is to use the actual chain metadata to generate the actual api augmented endpoints. The metadata we are adding here (in addition to the user types), is from the Edgeware Berlin testnet. So this is a rea-world example of configuring the API for a specific substrate chain. For the metadata retrieval, we just ran a simple curl command to retrieve the metadata -
+The idea here is to use the actual chain metadata to generate the actual api augmented endpoints. The metadata we are adding here (in addition to the user types), is from the Edgeware Berlin testnet. So this is a real-world example of configuring the API for a specific substrate chain. For the metadata retrieval, we just ran a simple curl command to get it from the node -
 
 `curl -H "Content-Type: application/json" -d '{"id":"1", "jsonrpc":"2.0", "method": "state_getMetadata", "params":[]}' http://localhost:9933`
 
@@ -50,7 +50,7 @@ The types are defined in the `src/interfaces` folder. While this repo contains a
 - `src/interfaces/definitions.ts` - this just exports all the sub-folder definitions in one go
 - `src/interfaces/<module>/definitions.ts` - type definitions for a specific module
 
-This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on the convention used in the `@polkadot/types` library. The generating scripts will expect a structure matching this, since the same underlying code is actually used inside `@polkadot/types` as well for interface generation. The top-level `interfaces/` folder can be name anything, however the internal content structure need to match what is defined above.
+This structure fully matches what is available in the `@polkadot/type/interfaces` folder, so the structure is setup based on the convention used in the `@polkadot/types` library. The generating scripts will expect something matching this since the same underlying code is actually used inside `@polkadot/types` as well. The top-level `interfaces/` folder can be name anything, however the internal content structure need to match what is defined above.
 
 For the top-level the definition file has the following contents -
 
@@ -84,7 +84,7 @@ export default {
 
 Just the type definitions (the structure of which you should be familiar with), nested inside a `types: {...}` container. This allows us future extension points, i.e. there is some work to expose the custom RPC types alongside, so that would become another key on a per-module basis.
 
-In the above, you will note that the `ProposalRecord` references a type for `voting`, i.e. `VoteStage`. The type generation and resolution will determine where the type comes from, and provide the required important on generation.
+In the above, you will note that the `ProposalRecord` references a type for `voting`, i.e. `VoteStage`. The type generation and resolution will determine where the type comes from, and provide the required imports on generation.
 
 Looking at the example in this repo, it also has `augment*`, `index.ts` and `types.ts` files in the interfaces folder. These are all generated, and will be re-generated when the generator is run - so all edits to these files will be lost. The only requirement for user-edits are the `definitions.ts` files.
 
