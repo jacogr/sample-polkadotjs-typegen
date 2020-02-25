@@ -1,4 +1,4 @@
-// Auto-generated via `yarn polkadot-types-from-defs`, do not edit
+// Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
 import { AnyNumber, ITuple } from '@polkadot/types/types';
@@ -25,59 +25,60 @@ import { Multiplier } from '@polkadot/types/interfaces/txpayment';
 import { Multisig } from '@polkadot/types/interfaces/utility';
 import { VoteRecord } from 'sample-polkadotjs-typegen/interfaces/voting';
 import { Observable } from 'rxjs';
+import { ApiTypes } from '@polkadot/api/types';
 
 declare module '@polkadot/api/types/storage' {
   export interface AugmentedQueries<ApiType> {
     system: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Extrinsics nonce for accounts.
        **/
-      accountNonce: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Index>> & QueryableStorageEntry<ApiType>;
+      accountNonce: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Index>>;
       /**
        * Total extrinsics count for the current block.
        **/
-      extrinsicCount: AugmentedQuery<ApiType, () => Observable<Option<u32>>> & QueryableStorageEntry<ApiType>;
+      extrinsicCount: AugmentedQuery<ApiType, () => Observable<Option<u32>>>;
       /**
        * Total weight for all extrinsics put together, for the current block.
        **/
-      allExtrinsicsWeight: AugmentedQuery<ApiType, () => Observable<Option<Weight>>> & QueryableStorageEntry<ApiType>;
+      allExtrinsicsWeight: AugmentedQuery<ApiType, () => Observable<Option<Weight>>>;
       /**
        * Total length (in bytes) for all extrinsics put together, for the current block.
        **/
-      allExtrinsicsLen: AugmentedQuery<ApiType, () => Observable<Option<u32>>> & QueryableStorageEntry<ApiType>;
+      allExtrinsicsLen: AugmentedQuery<ApiType, () => Observable<Option<u32>>>;
       /**
        * Map of block numbers to block hashes.
        **/
-      blockHash: AugmentedQuery<ApiType, (arg: BlockNumber | AnyNumber | Uint8Array) => Observable<Hash>> & QueryableStorageEntry<ApiType>;
+      blockHash: AugmentedQuery<ApiType, (arg: BlockNumber | AnyNumber | Uint8Array) => Observable<Hash>>;
       /**
        * Extrinsics data for the current block (maps an extrinsic's index to its data).
        **/
-      extrinsicData: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Bytes>> & QueryableStorageEntry<ApiType>;
+      extrinsicData: AugmentedQuery<ApiType, (arg: u32 | AnyNumber | Uint8Array) => Observable<Bytes>>;
       /**
        * The current block number being processed. Set by `execute_block`.
        **/
-      number: AugmentedQuery<ApiType, () => Observable<BlockNumber>> & QueryableStorageEntry<ApiType>;
+      number: AugmentedQuery<ApiType, () => Observable<BlockNumber>>;
       /**
        * Hash of the previous block.
        **/
-      parentHash: AugmentedQuery<ApiType, () => Observable<Hash>> & QueryableStorageEntry<ApiType>;
+      parentHash: AugmentedQuery<ApiType, () => Observable<Hash>>;
       /**
        * Extrinsics root of the current block, also part of the block header.
        **/
-      extrinsicsRoot: AugmentedQuery<ApiType, () => Observable<Hash>> & QueryableStorageEntry<ApiType>;
+      extrinsicsRoot: AugmentedQuery<ApiType, () => Observable<Hash>>;
       /**
        * Digest of the current block, also part of the block header.
        **/
-      digest: AugmentedQuery<ApiType, () => Observable<DigestOf>> & QueryableStorageEntry<ApiType>;
+      digest: AugmentedQuery<ApiType, () => Observable<DigestOf>>;
       /**
        * Events deposited for the current block.
        **/
-      events: AugmentedQuery<ApiType, () => Observable<Vec<EventRecord>>> & QueryableStorageEntry<ApiType>;
+      events: AugmentedQuery<ApiType, () => Observable<Vec<EventRecord>>>;
       /**
        * The number of events in the `Events<T>` list.
        **/
-      eventCount: AugmentedQuery<ApiType, () => Observable<EventIndex>> & QueryableStorageEntry<ApiType>;
+      eventCount: AugmentedQuery<ApiType, () => Observable<EventIndex>>;
       /**
        * Mapping between a topic (represented by T::Hash) and a vector of indexes
        * of events in the `<Events<T>>` list.
@@ -88,62 +89,62 @@ declare module '@polkadot/api/types/storage' {
        * the `EventIndex` then in case if the topic has the same contents on the next block
        * no notification will be triggered thus the event might be lost.
        **/
-      eventTopics: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Vec<ITuple<[BlockNumber, EventIndex]>>>> & QueryableStorageEntry<ApiType>;
+      eventTopics: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Vec<ITuple<[BlockNumber, EventIndex]>>>>;
     };
     utility: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The set of open multisig operations.
        **/
-      multisigs: AugmentedQueryDoubleMap<ApiType, (key1: AccountId | string | Uint8Array, key2: U8aFixed | string | Uint8Array) => Observable<Option<Multisig>>, AccountId | string | Uint8Array> & QueryableStorageEntry<ApiType>;
+      multisigs: AugmentedQueryDoubleMap<ApiType, (key1: AccountId | string | Uint8Array, key2: U8aFixed | string | Uint8Array) => Observable<Option<Multisig>>>;
     };
     timestamp: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Current time for the current block.
        **/
-      now: AugmentedQuery<ApiType, () => Observable<Moment>> & QueryableStorageEntry<ApiType>;
+      now: AugmentedQuery<ApiType, () => Observable<Moment>>;
       /**
        * Did the timestamp get updated in this block?
        **/
-      didUpdate: AugmentedQuery<ApiType, () => Observable<bool>> & QueryableStorageEntry<ApiType>;
+      didUpdate: AugmentedQuery<ApiType, () => Observable<bool>>;
     };
     authorship: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Uncles
        **/
-      uncles: AugmentedQuery<ApiType, () => Observable<Vec<UncleEntryItem>>> & QueryableStorageEntry<ApiType>;
+      uncles: AugmentedQuery<ApiType, () => Observable<Vec<UncleEntryItem>>>;
       /**
        * Author of current block.
        **/
-      author: AugmentedQuery<ApiType, () => Observable<Option<AccountId>>> & QueryableStorageEntry<ApiType>;
+      author: AugmentedQuery<ApiType, () => Observable<Option<AccountId>>>;
       /**
        * Whether uncles were already set in this block.
        **/
-      didSetUncles: AugmentedQuery<ApiType, () => Observable<bool>> & QueryableStorageEntry<ApiType>;
+      didSetUncles: AugmentedQuery<ApiType, () => Observable<bool>>;
     };
     indices: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The next free enumeration set.
        **/
-      nextEnumSet: AugmentedQuery<ApiType, () => Observable<AccountIndex>> & QueryableStorageEntry<ApiType>;
+      nextEnumSet: AugmentedQuery<ApiType, () => Observable<AccountIndex>>;
       /**
        * The enumeration sets.
        **/
-      enumSet: AugmentedQuery<ApiType, (arg: AccountIndex | AnyNumber | Uint8Array) => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      enumSet: AugmentedQuery<ApiType, (arg: AccountIndex | AnyNumber | Uint8Array) => Observable<Vec<AccountId>>>;
     };
     balances: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The total units issued in the system.
        **/
-      totalIssuance: AugmentedQuery<ApiType, () => Observable<Balance>> & QueryableStorageEntry<ApiType>;
+      totalIssuance: AugmentedQuery<ApiType, () => Observable<Balance>>;
       /**
        * Information regarding the vesting of a given account.
        **/
-      vesting: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<VestingSchedule>>> & QueryableStorageEntry<ApiType>;
+      vesting: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<VestingSchedule>>>;
       /**
        * The 'free' balance of a given account.
        * This is the only balance that matters in terms of most operations on tokens. It
@@ -155,7 +156,7 @@ declare module '@polkadot/api/types/storage' {
        * `frame_system::AccountNonce` is also deleted if `ReservedBalance` is also zero (it also gets
        * collapsed to zero if it ever becomes less than `ExistentialDeposit`.
        **/
-      freeBalance: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Balance>> & QueryableStorageEntry<ApiType>;
+      freeBalance: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Balance>>;
       /**
        * The amount of the balance of a given account that is externally reserved; this can still get
        * slashed, but gets slashed last of all.
@@ -166,417 +167,417 @@ declare module '@polkadot/api/types/storage' {
        * `frame_system::AccountNonce` is also deleted if `FreeBalance` is also zero (it also gets
        * collapsed to zero if it ever becomes less than `ExistentialDeposit`.)
        **/
-      reservedBalance: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Balance>> & QueryableStorageEntry<ApiType>;
+      reservedBalance: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Balance>>;
       /**
        * Any liquidity locks on some account balances.
        **/
-      locks: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Vec<BalanceLock>>> & QueryableStorageEntry<ApiType>;
+      locks: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Vec<BalanceLock>>>;
     };
     transactionPayment: {
-      [index: string]: QueryableStorageEntry<ApiType>;
-      nextFeeMultiplier: AugmentedQuery<ApiType, () => Observable<Multiplier>> & QueryableStorageEntry<ApiType>;
+
+      nextFeeMultiplier: AugmentedQuery<ApiType, () => Observable<Multiplier>>;
     };
     staking: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The ideal number of staking participants.
        **/
-      validatorCount: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      validatorCount: AugmentedQuery<ApiType, () => Observable<u32>>;
       /**
        * Minimum number of staking participants before emergency conditions are imposed.
        **/
-      minimumValidatorCount: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      minimumValidatorCount: AugmentedQuery<ApiType, () => Observable<u32>>;
       /**
        * Any validators that may never be slashed or forcibly kicked. It's a Vec since they're
        * easy to initialize and the performance hit is minimal (we expect no more than four
        * invulnerables) and restricted to testnets.
        **/
-      invulnerables: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      invulnerables: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>>;
       /**
        * Map from all locked "stash" accounts to the controller account.
        **/
-      bonded: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<AccountId>>> & QueryableStorageEntry<ApiType>;
+      bonded: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<AccountId>>>;
       /**
        * Map from all (unlocked) "controller" accounts to the info regarding the staking.
        **/
-      ledger: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<StakingLedger>>> & QueryableStorageEntry<ApiType>;
+      ledger: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<StakingLedger>>>;
       /**
        * Where the reward payment should be made. Keyed by stash.
        **/
-      payee: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<RewardDestination>> & QueryableStorageEntry<ApiType>;
+      payee: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<RewardDestination>>;
       /**
        * The map from (wannabe) validator stash key to the preferences of that validator.
        **/
-      validators: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ValidatorPrefs>> & QueryableStorageEntry<ApiType>;
+      validators: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ValidatorPrefs>>;
       /**
        * The map from nominator stash key to the set of stash keys of all validators to nominate.
        * NOTE: is private so that we can ensure upgraded before all typical accesses.
        * Direct storage APIs can still bypass this protection.
        **/
-      nominators: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<Nominations>>> & QueryableStorageEntry<ApiType>;
+      nominators: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<Nominations>>>;
       /**
        * Nominators for a particular account that is in action right now. You can't iterate
        * through validators here, but you can find them in the Session module.
        * This is keyed by the stash account.
        **/
-      stakers: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Exposure>> & QueryableStorageEntry<ApiType>;
+      stakers: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Exposure>>;
       /**
        * The currently elected validator set keyed by stash account ID.
        **/
-      currentElected: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      currentElected: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>>;
       /**
        * The current era index.
        **/
-      currentEra: AugmentedQuery<ApiType, () => Observable<EraIndex>> & QueryableStorageEntry<ApiType>;
+      currentEra: AugmentedQuery<ApiType, () => Observable<EraIndex>>;
       /**
        * The start of the current era.
        **/
-      currentEraStart: AugmentedQuery<ApiType, () => Observable<MomentOf>> & QueryableStorageEntry<ApiType>;
+      currentEraStart: AugmentedQuery<ApiType, () => Observable<MomentOf>>;
       /**
        * The session index at which the current era started.
        **/
-      currentEraStartSessionIndex: AugmentedQuery<ApiType, () => Observable<SessionIndex>> & QueryableStorageEntry<ApiType>;
+      currentEraStartSessionIndex: AugmentedQuery<ApiType, () => Observable<SessionIndex>>;
       /**
        * Rewards for the current era. Using indices of current elected set.
        **/
-      currentEraPointsEarned: AugmentedQuery<ApiType, () => Observable<EraPoints>> & QueryableStorageEntry<ApiType>;
+      currentEraPointsEarned: AugmentedQuery<ApiType, () => Observable<EraPoints>>;
       /**
        * The amount of balance actively at stake for each validator slot, currently.
        * This is used to derive rewards and punishments.
        **/
-      slotStake: AugmentedQuery<ApiType, () => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      slotStake: AugmentedQuery<ApiType, () => Observable<BalanceOf>>;
       /**
        * True if the next session change will be a new era regardless of index.
        **/
-      forceEra: AugmentedQuery<ApiType, () => Observable<Forcing>> & QueryableStorageEntry<ApiType>;
+      forceEra: AugmentedQuery<ApiType, () => Observable<Forcing>>;
       /**
        * The percentage of the slash that is distributed to reporters.
        * The rest of the slashed value is handled by the `Slash`.
        **/
-      slashRewardFraction: AugmentedQuery<ApiType, () => Observable<Perbill>> & QueryableStorageEntry<ApiType>;
+      slashRewardFraction: AugmentedQuery<ApiType, () => Observable<Perbill>>;
       /**
        * The amount of currency given to reporters of a slash event which was
        * canceled by extraordinary circumstances (e.g. governance).
        **/
-      canceledSlashPayout: AugmentedQuery<ApiType, () => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      canceledSlashPayout: AugmentedQuery<ApiType, () => Observable<BalanceOf>>;
       /**
        * All unapplied slashes that are queued for later.
        **/
-      unappliedSlashes: AugmentedQuery<ApiType, (arg: EraIndex | AnyNumber | Uint8Array) => Observable<Vec<UnappliedSlash>>> & QueryableStorageEntry<ApiType>;
+      unappliedSlashes: AugmentedQuery<ApiType, (arg: EraIndex | AnyNumber | Uint8Array) => Observable<Vec<UnappliedSlash>>>;
       /**
        * A mapping from still-bonded eras to the first session index of that era.
        **/
-      bondedEras: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[EraIndex, SessionIndex]>>>> & QueryableStorageEntry<ApiType>;
+      bondedEras: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[EraIndex, SessionIndex]>>>>;
       /**
        * All slashing events on validators, mapped by era to the highest slash proportion
        * and slash value of the era.
        **/
-      validatorSlashInEra: AugmentedQueryDoubleMap<ApiType, (key1: EraIndex | AnyNumber | Uint8Array, key2: AccountId | string | Uint8Array) => Observable<Option<ITuple<[Perbill, BalanceOf]>>>, EraIndex | AnyNumber | Uint8Array> & QueryableStorageEntry<ApiType>;
+      validatorSlashInEra: AugmentedQueryDoubleMap<ApiType, (key1: EraIndex | AnyNumber | Uint8Array, key2: AccountId | string | Uint8Array) => Observable<Option<ITuple<[Perbill, BalanceOf]>>>>;
       /**
        * All slashing events on nominators, mapped by era to the highest slash value of the era.
        **/
-      nominatorSlashInEra: AugmentedQueryDoubleMap<ApiType, (key1: EraIndex | AnyNumber | Uint8Array, key2: AccountId | string | Uint8Array) => Observable<Option<BalanceOf>>, EraIndex | AnyNumber | Uint8Array> & QueryableStorageEntry<ApiType>;
+      nominatorSlashInEra: AugmentedQueryDoubleMap<ApiType, (key1: EraIndex | AnyNumber | Uint8Array, key2: AccountId | string | Uint8Array) => Observable<Option<BalanceOf>>>;
       /**
        * Slashing spans for stash accounts.
        **/
-      slashingSpans: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<SlashingSpans>>> & QueryableStorageEntry<ApiType>;
+      slashingSpans: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<SlashingSpans>>>;
       /**
        * Records information about the maximum slash of a stash within a slashing span,
        * as well as how much reward has been paid out.
        **/
-      spanSlash: AugmentedQuery<ApiType, (arg: ITuple<[AccountId, SpanIndex]>) => Observable<SpanRecord>> & QueryableStorageEntry<ApiType>;
+      spanSlash: AugmentedQuery<ApiType, (arg: ITuple<[AccountId, SpanIndex]> | [AccountId | string | Uint8Array, SpanIndex | AnyNumber | Uint8Array]) => Observable<SpanRecord>>;
       /**
        * The earliest era for which we have a pending, unapplied slash.
        **/
-      earliestUnappliedSlash: AugmentedQuery<ApiType, () => Observable<Option<EraIndex>>> & QueryableStorageEntry<ApiType>;
+      earliestUnappliedSlash: AugmentedQuery<ApiType, () => Observable<Option<EraIndex>>>;
       /**
        * The version of storage for upgrade.
        **/
-      storageVersion: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      storageVersion: AugmentedQuery<ApiType, () => Observable<u32>>;
     };
     session: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The current set of validators.
        **/
-      validators: AugmentedQuery<ApiType, () => Observable<Vec<ValidatorId>>> & QueryableStorageEntry<ApiType>;
+      validators: AugmentedQuery<ApiType, () => Observable<Vec<ValidatorId>>>;
       /**
        * Current index of the session.
        **/
-      currentIndex: AugmentedQuery<ApiType, () => Observable<SessionIndex>> & QueryableStorageEntry<ApiType>;
+      currentIndex: AugmentedQuery<ApiType, () => Observable<SessionIndex>>;
       /**
        * True if the underlying economic identities or weighting behind the validators
        * has changed in the queued validator set.
        **/
-      queuedChanged: AugmentedQuery<ApiType, () => Observable<bool>> & QueryableStorageEntry<ApiType>;
+      queuedChanged: AugmentedQuery<ApiType, () => Observable<bool>>;
       /**
        * The queued keys for the next session. When the next session begins, these keys
        * will be used to determine the validator's session keys.
        **/
-      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[ValidatorId, Keys]>>>> & QueryableStorageEntry<ApiType>;
+      queuedKeys: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[ValidatorId, Keys]>>>>;
       /**
        * Indices of disabled validators.
        * The set is cleared when `on_session_ending` returns a new set of identities.
        **/
-      disabledValidators: AugmentedQuery<ApiType, () => Observable<Vec<u32>>> & QueryableStorageEntry<ApiType>;
+      disabledValidators: AugmentedQuery<ApiType, () => Observable<Vec<u32>>>;
       /**
        * The next session keys for a validator.
        * The first key is always `DEDUP_KEY_PREFIX` to have all the data in the same branch of
        * the trie. Having all data in the same branch should prevent slowing down other queries.
        **/
-      nextKeys: AugmentedQueryDoubleMap<ApiType, (key1: Bytes | string | Uint8Array, key2: ValidatorId | string | Uint8Array) => Observable<Option<Keys>>, Bytes | string | Uint8Array> & QueryableStorageEntry<ApiType>;
+      nextKeys: AugmentedQueryDoubleMap<ApiType, (key1: Bytes | string | Uint8Array, key2: ValidatorId | string | Uint8Array) => Observable<Option<Keys>>>;
       /**
        * The owner of a key. The second key is the `KeyTypeId` + the encoded key.
        * The first key is always `DEDUP_KEY_PREFIX` to have all the data in the same branch of
        * the trie. Having all data in the same branch should prevent slowing down other queries.
        **/
-      keyOwner: AugmentedQueryDoubleMap<ApiType, (key1: Bytes | string | Uint8Array, key2: ITuple<[KeyTypeId, Bytes]>) => Observable<Option<ValidatorId>>, Bytes | string | Uint8Array> & QueryableStorageEntry<ApiType>;
+      keyOwner: AugmentedQueryDoubleMap<ApiType, (key1: Bytes | string | Uint8Array, key2: ITuple<[KeyTypeId, Bytes]> | [KeyTypeId | AnyNumber | Uint8Array, Bytes | string | Uint8Array]) => Observable<Option<ValidatorId>>>;
     };
     democracy: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The number of (public) proposals that have been made so far.
        **/
-      publicPropCount: AugmentedQuery<ApiType, () => Observable<PropIndex>> & QueryableStorageEntry<ApiType>;
+      publicPropCount: AugmentedQuery<ApiType, () => Observable<PropIndex>>;
       /**
        * The public proposals. Unsorted. The second item is the proposal's hash.
        **/
-      publicProps: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[PropIndex, Hash, AccountId]>>>> & QueryableStorageEntry<ApiType>;
+      publicProps: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[PropIndex, Hash, AccountId]>>>>;
       /**
        * Map of hashes to the proposal preimage, along with who registered it and their deposit.
        * The block number is the block at which it was deposited.
        **/
-      preimages: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ITuple<[Bytes, AccountId, BalanceOf, BlockNumber]>>>> & QueryableStorageEntry<ApiType>;
+      preimages: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ITuple<[Bytes, AccountId, BalanceOf, BlockNumber]>>>>;
       /**
        * Those who have locked a deposit.
        **/
-      depositOf: AugmentedQuery<ApiType, (arg: PropIndex | AnyNumber | Uint8Array) => Observable<Option<ITuple<[BalanceOf, Vec<AccountId>]>>>> & QueryableStorageEntry<ApiType>;
+      depositOf: AugmentedQuery<ApiType, (arg: PropIndex | AnyNumber | Uint8Array) => Observable<Option<ITuple<[BalanceOf, Vec<AccountId>]>>>>;
       /**
        * The next free referendum index, aka the number of referenda started so far.
        **/
-      referendumCount: AugmentedQuery<ApiType, () => Observable<ReferendumIndex>> & QueryableStorageEntry<ApiType>;
+      referendumCount: AugmentedQuery<ApiType, () => Observable<ReferendumIndex>>;
       /**
        * The lowest referendum index representing an unbaked referendum. Equal to
        * `ReferendumCount` if there isn't a unbaked referendum.
        **/
-      lowestUnbaked: AugmentedQuery<ApiType, () => Observable<ReferendumIndex>> & QueryableStorageEntry<ApiType>;
+      lowestUnbaked: AugmentedQuery<ApiType, () => Observable<ReferendumIndex>>;
       /**
        * Information concerning any given referendum.
        **/
-      referendumInfoOf: AugmentedQuery<ApiType, (arg: ReferendumIndex | AnyNumber | Uint8Array) => Observable<Option<ReferendumInfo>>> & QueryableStorageEntry<ApiType>;
+      referendumInfoOf: AugmentedQuery<ApiType, (arg: ReferendumIndex | AnyNumber | Uint8Array) => Observable<Option<ReferendumInfo>>>;
       /**
        * Queue of successful referenda to be dispatched. Stored ordered by block number.
        **/
-      dispatchQueue: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[BlockNumber, Hash, ReferendumIndex]>>>> & QueryableStorageEntry<ApiType>;
+      dispatchQueue: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[BlockNumber, Hash, ReferendumIndex]>>>>;
       /**
        * Get the voters for the current proposal.
        **/
-      votersFor: AugmentedQuery<ApiType, (arg: ReferendumIndex | AnyNumber | Uint8Array) => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      votersFor: AugmentedQuery<ApiType, (arg: ReferendumIndex | AnyNumber | Uint8Array) => Observable<Vec<AccountId>>>;
       /**
        * Get the vote in a given referendum of a particular voter. The result is meaningful only
        * if `voters_for` includes the voter when called with the referendum (you'll get the
        * default `Vote` value otherwise). If you don't want to check `voters_for`, then you can
        * also check for simple existence with `VoteOf::exists` first.
        **/
-      voteOf: AugmentedQuery<ApiType, (arg: ITuple<[ReferendumIndex, AccountId]>) => Observable<Vote>> & QueryableStorageEntry<ApiType>;
+      voteOf: AugmentedQuery<ApiType, (arg: ITuple<[ReferendumIndex, AccountId]> | [ReferendumIndex | AnyNumber | Uint8Array, AccountId | string | Uint8Array]) => Observable<Vote>>;
       /**
        * Who is able to vote for whom. Value is the fund-holding account, key is the
        * vote-transaction-sending account.
        **/
-      proxy: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<AccountId>>> & QueryableStorageEntry<ApiType>;
+      proxy: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<AccountId>>>;
       /**
        * Get the account (and lock periods) to which another account is delegating vote.
        **/
-      delegations: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ITuple<[AccountId, Conviction]>>> & QueryableStorageEntry<ApiType>;
+      delegations: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ITuple<[AccountId, Conviction]>>>;
       /**
        * True if the last referendum tabled was submitted externally. False if it was a public
        * proposal.
        **/
-      lastTabledWasExternal: AugmentedQuery<ApiType, () => Observable<bool>> & QueryableStorageEntry<ApiType>;
+      lastTabledWasExternal: AugmentedQuery<ApiType, () => Observable<bool>>;
       /**
        * The referendum to be tabled whenever it would be valid to table an external proposal.
        * This happens when a referendum needs to be tabled and one of two conditions are met:
        * - `LastTabledWasExternal` is `false`; or
        * - `PublicProps` is empty.
        **/
-      nextExternal: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[Hash, VoteThreshold]>>>> & QueryableStorageEntry<ApiType>;
+      nextExternal: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[Hash, VoteThreshold]>>>>;
       /**
        * A record of who vetoed what. Maps proposal hash to a possible existent block number
        * (until when it may not be resubmitted) and who vetoed it.
        **/
-      blacklist: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ITuple<[BlockNumber, Vec<AccountId>]>>>> & QueryableStorageEntry<ApiType>;
+      blacklist: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ITuple<[BlockNumber, Vec<AccountId>]>>>>;
       /**
        * Record of all proposals that have been subject to emergency cancellation.
        **/
-      cancellations: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<bool>> & QueryableStorageEntry<ApiType>;
+      cancellations: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<bool>>;
     };
     council: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The hashes of the active proposals.
        **/
-      proposals: AugmentedQuery<ApiType, () => Observable<Vec<Hash>>> & QueryableStorageEntry<ApiType>;
+      proposals: AugmentedQuery<ApiType, () => Observable<Vec<Hash>>>;
       /**
        * Actual proposal for a given hash, if it's current.
        **/
-      proposalOf: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Proposal>>> & QueryableStorageEntry<ApiType>;
+      proposalOf: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Proposal>>>;
       /**
        * Votes on a given proposal, if it is ongoing.
        **/
-      voting: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Votes>>> & QueryableStorageEntry<ApiType>;
+      voting: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Votes>>>;
       /**
        * Proposals so far.
        **/
-      proposalCount: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      proposalCount: AugmentedQuery<ApiType, () => Observable<u32>>;
       /**
        * The current members of the collective. This is stored sorted (just by value).
        **/
-      members: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      members: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>>;
     };
     elections: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The current elected membership. Sorted based on account id.
        **/
-      members: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId, BalanceOf]>>>> & QueryableStorageEntry<ApiType>;
+      members: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId, BalanceOf]>>>>;
       /**
        * The current runners_up. Sorted based on low to high merit (worse to best runner).
        **/
-      runnersUp: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId, BalanceOf]>>>> & QueryableStorageEntry<ApiType>;
+      runnersUp: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[AccountId, BalanceOf]>>>>;
       /**
        * The total number of vote rounds that have happened, excluding the upcoming one.
        **/
-      electionRounds: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      electionRounds: AugmentedQuery<ApiType, () => Observable<u32>>;
       /**
        * Votes of a particular voter, with the round index of the votes.
        **/
-      votesOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      votesOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Vec<AccountId>>>;
       /**
        * Locked stake of a voter.
        **/
-      stakeOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      stakeOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<BalanceOf>>;
       /**
        * The present candidate list. Sorted based on account-id. A current member or a runner can
        * never enter this vector and is always implicitly assumed to be a candidate.
        **/
-      candidates: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>> & QueryableStorageEntry<ApiType>;
+      candidates: AugmentedQuery<ApiType, () => Observable<Vec<AccountId>>>;
     };
     grandpa: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * DEPRECATED
        * This used to store the current authority set, which has been migrated to the well-known
        * GRANDPA_AUTHORITES_KEY unhashed key.
        **/
-      authorities: AugmentedQuery<ApiType, () => Observable<AuthorityList>> & QueryableStorageEntry<ApiType>;
+      authorities: AugmentedQuery<ApiType, () => Observable<AuthorityList>>;
       /**
        * State of the current authority set.
        **/
-      state: AugmentedQuery<ApiType, () => Observable<StoredState>> & QueryableStorageEntry<ApiType>;
+      state: AugmentedQuery<ApiType, () => Observable<StoredState>>;
       /**
        * Pending change: (signaled at, scheduled change).
        **/
-      pendingChange: AugmentedQuery<ApiType, () => Observable<Option<StoredPendingChange>>> & QueryableStorageEntry<ApiType>;
+      pendingChange: AugmentedQuery<ApiType, () => Observable<Option<StoredPendingChange>>>;
       /**
        * next block number where we can force a change.
        **/
-      nextForced: AugmentedQuery<ApiType, () => Observable<Option<BlockNumber>>> & QueryableStorageEntry<ApiType>;
+      nextForced: AugmentedQuery<ApiType, () => Observable<Option<BlockNumber>>>;
       /**
        * `true` if we are currently stalled.
        **/
-      stalled: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[BlockNumber, BlockNumber]>>>> & QueryableStorageEntry<ApiType>;
+      stalled: AugmentedQuery<ApiType, () => Observable<Option<ITuple<[BlockNumber, BlockNumber]>>>>;
       /**
        * The number of changes (both in terms of keys and underlying economic responsibilities)
        * in the "set" of Grandpa validators from genesis.
        **/
-      currentSetId: AugmentedQuery<ApiType, () => Observable<SetId>> & QueryableStorageEntry<ApiType>;
+      currentSetId: AugmentedQuery<ApiType, () => Observable<SetId>>;
       /**
        * A mapping from grandpa set ID to the index of the *most recent* session for which its members were responsible.
        **/
-      setIdSession: AugmentedQuery<ApiType, (arg: SetId | AnyNumber | Uint8Array) => Observable<Option<SessionIndex>>> & QueryableStorageEntry<ApiType>;
+      setIdSession: AugmentedQuery<ApiType, (arg: SetId | AnyNumber | Uint8Array) => Observable<Option<SessionIndex>>>;
     };
     treasury: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Number of proposals that have been made.
        **/
-      proposalCount: AugmentedQuery<ApiType, () => Observable<ProposalIndex>> & QueryableStorageEntry<ApiType>;
+      proposalCount: AugmentedQuery<ApiType, () => Observable<ProposalIndex>>;
       /**
        * Proposals that have been made.
        **/
-      proposals: AugmentedQuery<ApiType, (arg: ProposalIndex | AnyNumber | Uint8Array) => Observable<Option<TreasuryProposal>>> & QueryableStorageEntry<ApiType>;
+      proposals: AugmentedQuery<ApiType, (arg: ProposalIndex | AnyNumber | Uint8Array) => Observable<Option<TreasuryProposal>>>;
       /**
        * Proposal indices that have been approved but not yet awarded.
        **/
-      approvals: AugmentedQuery<ApiType, () => Observable<Vec<ProposalIndex>>> & QueryableStorageEntry<ApiType>;
+      approvals: AugmentedQuery<ApiType, () => Observable<Vec<ProposalIndex>>>;
       /**
        * Tips that are not yet completed. Keyed by the hash of `(reason, who)` from the value.
        * This has the insecure enumerable hash function since the key itself is already
        * guaranteed to be a secure hash.
        **/
-      tips: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<OpenTip>>> & QueryableStorageEntry<ApiType>;
+      tips: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<OpenTip>>>;
       /**
        * Simple preimage lookup from the reason's hash to the original data. Again, has an
        * insecure enumerable hash since the key is guaranteed to be the result of a secure hash.
        **/
-      reasons: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Bytes>>> & QueryableStorageEntry<ApiType>;
+      reasons: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<Bytes>>>;
     };
     contracts: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Gas spent so far in this block.
        **/
-      gasSpent: AugmentedQuery<ApiType, () => Observable<Gas>> & QueryableStorageEntry<ApiType>;
+      gasSpent: AugmentedQuery<ApiType, () => Observable<Gas>>;
       /**
        * Current cost schedule for contracts.
        **/
-      currentSchedule: AugmentedQuery<ApiType, () => Observable<Schedule>> & QueryableStorageEntry<ApiType>;
+      currentSchedule: AugmentedQuery<ApiType, () => Observable<Schedule>>;
       /**
        * A mapping from an original code hash to the original code, untouched by instrumentation.
        **/
-      pristineCode: AugmentedQuery<ApiType, (arg: CodeHash | string | Uint8Array) => Observable<Option<Bytes>>> & QueryableStorageEntry<ApiType>;
+      pristineCode: AugmentedQuery<ApiType, (arg: CodeHash | string | Uint8Array) => Observable<Option<Bytes>>>;
       /**
        * A mapping between an original code hash and instrumented wasm code, ready for execution.
        **/
-      codeStorage: AugmentedQuery<ApiType, (arg: CodeHash | string | Uint8Array) => Observable<Option<PrefabWasmModule>>> & QueryableStorageEntry<ApiType>;
+      codeStorage: AugmentedQuery<ApiType, (arg: CodeHash | string | Uint8Array) => Observable<Option<PrefabWasmModule>>>;
       /**
        * The subtrie counter.
        **/
-      accountCounter: AugmentedQuery<ApiType, () => Observable<u64>> & QueryableStorageEntry<ApiType>;
+      accountCounter: AugmentedQuery<ApiType, () => Observable<u64>>;
       /**
        * The code associated with a given account.
        **/
-      contractInfoOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ContractInfo>>> & QueryableStorageEntry<ApiType>;
+      contractInfoOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ContractInfo>>>;
       /**
        * The price of one unit of gas.
        **/
-      gasPrice: AugmentedQuery<ApiType, () => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      gasPrice: AugmentedQuery<ApiType, () => Observable<BalanceOf>>;
     };
     identity: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Information that is pertinent to identify the entity behind an account.
        **/
-      identityOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<Registration>>> & QueryableStorageEntry<ApiType>;
+      identityOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<Registration>>>;
       /**
        * The super-identity of an alternative "sub" identity together with its name, within that
        * context. If the account is not some other account's sub-identity, then just `None`.
        **/
-      superOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ITuple<[AccountId, Data]>>>> & QueryableStorageEntry<ApiType>;
+      superOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ITuple<[AccountId, Data]>>>>;
       /**
        * Alternative "sub" identities of this account.
        * The first item is the deposit, the second is a vector of the accounts.
        **/
-      subsOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ITuple<[BalanceOf, Vec<AccountId>]>>> & QueryableStorageEntry<ApiType>;
+      subsOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<ITuple<[BalanceOf, Vec<AccountId>]>>>;
       /**
        * The set of registrars. Not expected to get very big as can only be added through a
        * special origin (likely a council motion).
        * The index into this can be cast to `RegistrarIndex` to get a valid value.
        **/
-      registrars: AugmentedQuery<ApiType, () => Observable<Vec<Option<RegistrarInfo>>>> & QueryableStorageEntry<ApiType>;
+      registrars: AugmentedQuery<ApiType, () => Observable<Vec<Option<RegistrarInfo>>>>;
     };
     imOnline: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The block number after which it's ok to send heartbeats in current session.
        * At the beginning of each session we set this to a value that should
@@ -584,119 +585,122 @@ declare module '@polkadot/api/types/storage' {
        * The idea is to first wait for the validators to produce a block
        * in the current session, so that the heartbeat later on will not be necessary.
        **/
-      heartbeatAfter: AugmentedQuery<ApiType, () => Observable<BlockNumber>> & QueryableStorageEntry<ApiType>;
+      heartbeatAfter: AugmentedQuery<ApiType, () => Observable<BlockNumber>>;
       /**
        * The current set of keys that may issue a heartbeat.
        **/
-      keys: AugmentedQuery<ApiType, () => Observable<Vec<AuthorityId>>> & QueryableStorageEntry<ApiType>;
+      keys: AugmentedQuery<ApiType, () => Observable<Vec<AuthorityId>>>;
       /**
        * For each session index, we keep a mapping of `AuthIndex`
        * to `offchain::OpaqueNetworkState`.
        **/
-      receivedHeartbeats: AugmentedQueryDoubleMap<ApiType, (key1: SessionIndex | AnyNumber | Uint8Array, key2: AuthIndex | AnyNumber | Uint8Array) => Observable<Option<Bytes>>, SessionIndex | AnyNumber | Uint8Array> & QueryableStorageEntry<ApiType>;
+      receivedHeartbeats: AugmentedQueryDoubleMap<ApiType, (key1: SessionIndex | AnyNumber | Uint8Array, key2: AuthIndex | AnyNumber | Uint8Array) => Observable<Option<Bytes>>>;
       /**
        * For each session index, we keep a mapping of `T::ValidatorId` to the
        * number of blocks authored by the given authority.
        **/
-      authoredBlocks: AugmentedQueryDoubleMap<ApiType, (key1: SessionIndex | AnyNumber | Uint8Array, key2: ValidatorId | string | Uint8Array) => Observable<u32>, SessionIndex | AnyNumber | Uint8Array> & QueryableStorageEntry<ApiType>;
+      authoredBlocks: AugmentedQueryDoubleMap<ApiType, (key1: SessionIndex | AnyNumber | Uint8Array, key2: ValidatorId | string | Uint8Array) => Observable<u32>>;
     };
     offences: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The primary structure that holds all offence records keyed by report identifiers.
        **/
-      reports: AugmentedQuery<ApiType, (arg: ReportIdOf | string | Uint8Array) => Observable<Option<OffenceDetails>>> & QueryableStorageEntry<ApiType>;
+      reports: AugmentedQuery<ApiType, (arg: ReportIdOf | string | Uint8Array) => Observable<Option<OffenceDetails>>>;
       /**
        * A vector of reports of the same kind that happened at the same time slot.
        **/
-      concurrentReportsIndex: AugmentedQueryDoubleMap<ApiType, (key1: Kind | string | Uint8Array, key2: OpaqueTimeSlot | string | Uint8Array) => Observable<Vec<ReportIdOf>>, Kind | string | Uint8Array> & QueryableStorageEntry<ApiType>;
+      concurrentReportsIndex: AugmentedQueryDoubleMap<ApiType, (key1: Kind | string | Uint8Array, key2: OpaqueTimeSlot | string | Uint8Array) => Observable<Vec<ReportIdOf>>>;
       /**
        * Enumerates all reports of a kind along with the time they happened.
        * All reports are sorted by the time of offence.
        * Note that the actual type of this mapping is `Vec<u8>`, this is because values of
        * different types are not supported at the moment so we are doing the manual serialization.
        **/
-      reportsByKindIndex: AugmentedQuery<ApiType, (arg: Kind | string | Uint8Array) => Observable<Bytes>> & QueryableStorageEntry<ApiType>;
+      reportsByKindIndex: AugmentedQuery<ApiType, (arg: Kind | string | Uint8Array) => Observable<Bytes>>;
     };
     randomnessCollectiveFlip: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Series of block headers from the last 81 blocks that acts as random seed material. This
        * is arranged as a ring buffer with `block_number % 81` being the index into the `Vec` of
        * the oldest hash.
        **/
-      randomMaterial: AugmentedQuery<ApiType, () => Observable<Vec<Hash>>> & QueryableStorageEntry<ApiType>;
+      randomMaterial: AugmentedQuery<ApiType, () => Observable<Vec<Hash>>>;
     };
     nicks: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The lookup table for names.
        **/
-      nameOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ITuple<[Bytes, BalanceOf]>>>> & QueryableStorageEntry<ApiType>;
+      nameOf: AugmentedQuery<ApiType, (arg: AccountId | string | Uint8Array) => Observable<Option<ITuple<[Bytes, BalanceOf]>>>>;
     };
     sudo: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The `AccountId` of the sudo key.
        **/
-      key: AugmentedQuery<ApiType, () => Observable<AccountId>> & QueryableStorageEntry<ApiType>;
+      key: AugmentedQuery<ApiType, () => Observable<AccountId>>;
     };
     signaling: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The total number of proposals created thus far.
        **/
-      proposalCount: AugmentedQuery<ApiType, () => Observable<u32>> & QueryableStorageEntry<ApiType>;
+      proposalCount: AugmentedQuery<ApiType, () => Observable<u32>>;
       /**
        * A list of all extant proposals.
        **/
-      inactiveProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>> & QueryableStorageEntry<ApiType>;
+      inactiveProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>>;
       /**
        * A list of active proposals along with the time at which they complete.
        **/
-      activeProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>> & QueryableStorageEntry<ApiType>;
+      activeProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>>;
       /**
        * A list of completed proposals, pending deletion
        **/
-      completedProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>> & QueryableStorageEntry<ApiType>;
+      completedProposals: AugmentedQuery<ApiType, () => Observable<Vec<ITuple<[Hash, BlockNumber]>>>>;
       /**
        * Amount of time a proposal remains in "Voting" stage.
        **/
-      votingLength: AugmentedQuery<ApiType, () => Observable<BlockNumber>> & QueryableStorageEntry<ApiType>;
+      votingLength: AugmentedQuery<ApiType, () => Observable<BlockNumber>>;
       /**
        * Map for retrieving the information about any proposal from its hash.
        **/
-      proposalOf: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ProposalRecord>>> & QueryableStorageEntry<ApiType>;
+      proposalOf: AugmentedQuery<ApiType, (arg: Hash | string | Uint8Array) => Observable<Option<ProposalRecord>>>;
       /**
        * Registration bond
        **/
-      proposalCreationBond: AugmentedQuery<ApiType, () => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      proposalCreationBond: AugmentedQuery<ApiType, () => Observable<BalanceOf>>;
     };
     voting: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * The map of all vote records indexed by id
        **/
-      voteRecords: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Option<VoteRecord>>> & QueryableStorageEntry<ApiType>;
+      voteRecords: AugmentedQuery<ApiType, (arg: u64 | AnyNumber | Uint8Array) => Observable<Option<VoteRecord>>>;
       /**
        * The number of vote records that have been created
        **/
-      voteRecordCount: AugmentedQuery<ApiType, () => Observable<u64>> & QueryableStorageEntry<ApiType>;
+      voteRecordCount: AugmentedQuery<ApiType, () => Observable<u64>>;
     };
     treasuryReward: {
-      [index: string]: QueryableStorageEntry<ApiType>;
+
       /**
        * Interval in number of blocks to reward treasury
        **/
-      mintingInterval: AugmentedQuery<ApiType, () => Observable<BlockNumber>> & QueryableStorageEntry<ApiType>;
+      mintingInterval: AugmentedQuery<ApiType, () => Observable<BlockNumber>>;
       /**
        * Current payout of module
        **/
-      currentPayout: AugmentedQuery<ApiType, () => Observable<BalanceOf>> & QueryableStorageEntry<ApiType>;
+      currentPayout: AugmentedQuery<ApiType, () => Observable<BalanceOf>>;
       /**
        * Current pot
        **/
-      pot: AugmentedQuery<ApiType, () => Observable<Balance>> & QueryableStorageEntry<ApiType>;
+      pot: AugmentedQuery<ApiType, () => Observable<Balance>>;
     };
+  }
+
+  export interface QueryableStorage<ApiType extends ApiTypes> extends AugmentedQueries<ApiType> {
   }
 }

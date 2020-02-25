@@ -1,7 +1,6 @@
-// Auto-generated via `yarn polkadot-types-from-defs`, do not edit
+// Auto-generated via `yarn polkadot-types-from-chain`, do not edit
 /* eslint-disable @typescript-eslint/no-empty-interface */
 
-import { Codec } from '@polkadot/types/types';
 import { Bytes, u32 } from '@polkadot/types/primitive';
 import { Gas } from '@polkadot/types/interfaces/contracts';
 import { Balance, BalanceOf, BlockNumber, Moment, Percent, Permill } from '@polkadot/types/interfaces/runtime';
@@ -11,7 +10,7 @@ import { EraIndex } from '@polkadot/types/interfaces/staking';
 declare module '@polkadot/metadata/Decorated/consts/types' {
   export interface Constants {
     timestamp: {
-      [index: string]: Codec;
+
       /**
        * The minimum period between blocks. Beware that this is different to the *expected* period
        * that the block production apparatus provides. Your chosen consensus system will generally
@@ -21,7 +20,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       minimumPeriod: AugmentedConst<Moment>;
     };
     balances: {
-      [index: string]: Codec;
+
       /**
        * The minimum amount required to keep an account open.
        **/
@@ -36,7 +35,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       creationFee: AugmentedConst<Balance>;
     };
     transactionPayment: {
-      [index: string]: Codec;
+
       /**
        * The fee to be paid for making a transaction; the base.
        **/
@@ -47,7 +46,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       transactionByteFee: AugmentedConst<BalanceOf>;
     };
     staking: {
-      [index: string]: Codec;
+
       /**
        * Number of sessions per era.
        **/
@@ -58,7 +57,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       bondingDuration: AugmentedConst<EraIndex>;
     };
     session: {
-      [index: string]: Codec;
+
       /**
        * Used as first key for `NextKeys` and `KeyOwner` to put all the data into the same branch
        * of the trie.
@@ -66,7 +65,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       dedupKeyPrefix: AugmentedConst<Bytes>;
     };
     democracy: {
-      [index: string]: Codec;
+
       /**
        * The minimum period of locking and the period between a proposal being approved and enacted.
        * It should generally be a little more than the unstake period to ensure that
@@ -100,7 +99,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       preimageByteDeposit: AugmentedConst<BalanceOf>;
     };
     elections: {
-      [index: string]: Codec;
+
       candidacyBond: AugmentedConst<BalanceOf>;
       votingBond: AugmentedConst<BalanceOf>;
       desiredMembers: AugmentedConst<u32>;
@@ -108,7 +107,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       termDuration: AugmentedConst<BlockNumber>;
     };
     finalityTracker: {
-      [index: string]: Codec;
+
       /**
        * The number of recent samples to keep from this chain. Default is 101.
        **/
@@ -119,7 +118,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       reportLatency: AugmentedConst<BlockNumber>;
     };
     treasury: {
-      [index: string]: Codec;
+
       /**
        * Fraction of a proposal's value that should be bonded in order to place the proposal.
        * An accepted proposal gets these back. A rejected proposal does not.
@@ -155,7 +154,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       tipReportDepositPerByte: AugmentedConst<BalanceOf>;
     };
     contracts: {
-      [index: string]: Codec;
+
       /**
        * Number of block delay an extrinsic claim surcharge has.
        * When claim surcharge is called by an extrinsic the rent is checked
@@ -236,7 +235,7 @@ declare module '@polkadot/metadata/Decorated/consts/types' {
       blockGasLimit: AugmentedConst<Gas>;
     };
     nicks: {
-      [index: string]: Codec;
+
       /**
        * Reservation fee.
        **/
